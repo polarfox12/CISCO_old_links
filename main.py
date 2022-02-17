@@ -19,14 +19,14 @@ def get_interfaces_list(session):
     result = session.send_command('sh int desc')
     result = result.split('\n')
     del result[0]
-    inteface_list = []
+    interface_list = []
     for i in result:
         if 'up' in i or 'admin down' in i:
             pass
         else:
             i = i.split(' ')
-            inteface_list.append(i[0])
-    return inteface_list
+            interface_list.append(i[0])
+    return interface_list
 
 
 def main():
