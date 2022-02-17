@@ -3,10 +3,13 @@ import dotenv
 
 dotenv.load_dotenv('.env')
 
+# ACCOUNT
 LOGIN = os.environ['LOGIN']
 PASSWORD = os.environ['PASSWORD']
-R0dot1 = os.environ['R0dot1']
 
+# DEVICES_IP_ADDRESSES
+ip_R0dot1 = os.environ['R0dot1']
+ip_R0dot2 = os.environ['R0dot2']
 
 
 class Device(object):
@@ -19,7 +22,12 @@ class Device(object):
         self.port = port
 
 
-ACS_0120_R0dot1 = Device('cisco_ios', R0dot1, LOGIN, PASSWORD, 22)
+devices = []
+R0dot1 = Device('cisco_ios', ip_R0dot1, LOGIN, PASSWORD, 22)
+R0dot2 = Device('cisco_ios', ip_R0dot2, LOGIN, PASSWORD, 22)
+
+devices.append(R0dot1)
+devices.append(R0dot2)
 
 cisco_router = {
     'device_type': 'cisco_ios',
