@@ -21,7 +21,7 @@ def get_interfaces_list(session):
     del result[0]
     interface_list = []
     for i in result:
-        if 'up' in i or 'admin down' in i:
+        if 'up' in i or 'admin down' in i or 'Interface' in i:
             pass
         else:
             i = i.split(' ')
@@ -33,7 +33,7 @@ def main():
     for d in devices:
         active_session = create_session(d)
         interfaces_list = get_interfaces_list(active_session)
-        print(interfaces_list)
+        print(d.name, interfaces_list)
 
 
 if __name__ == '__main__':
