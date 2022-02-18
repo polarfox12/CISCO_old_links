@@ -29,6 +29,14 @@ def get_interfaces_list(session):
     return interface_list
 
 
+class PortInfo(object):
+    def __init__(self, port_name, port_desc, port_offline, port_vlan):
+        self.port_name = port_name
+        self.port_desc = port_desc
+        self.port_offline = port_offline
+        self.port_vlan = port_vlan
+
+
 def main():
     for d in devices:
         active_session = create_session(d)
