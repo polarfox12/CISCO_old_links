@@ -92,11 +92,3 @@ devices.append(R3dot1)
 devices.append(R3dot2)
 
 
-cisco_router = {
-    'device_type': 'cisco_ios',
-    'host': '10.20.245.101',
-    'username': 'sorokin.k',
-    'password': 'T1p0svitch99',
-    #    'secret': 'enablepass',
-    'port': 22,
-}

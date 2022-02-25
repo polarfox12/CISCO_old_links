@@ -30,11 +30,24 @@ def get_interfaces_list(session):
 
 
 class PortInfo(object):
-    def __init__(self, port_name, port_desc, port_offline, port_vlan):
+    def __init__(self, port_name):
         self.port_name = port_name
-        self.port_desc = port_desc
-        self.port_offline = port_offline
-        self.port_vlan = port_vlan
+        # self.port_desc = port_desc
+        # self.port_offline = port_offline
+        # self.port_offline = port_offline
+        # self.port_vlan = port_vlan
+
+
+def get_info_port(interfaces_list, session):
+    for i in interfaces_list:
+        p = PortInfo(i)
+        p.port_desc = session.send_command('sh run int {} | inc description'.format(i))
+        p.port_vlan = session.send_command('sh run int {} | inc vlan'.format(i))
+        last_input = (session.send_command('sh int {} | inc Last input'.format(i))).split(',')
+        p.port_offline = last_input[0]
+        locals()[i] = p
+
+
 
 
 def main():
