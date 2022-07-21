@@ -32,11 +32,7 @@ def get_interfaces_list(session):
 class PortInfo(object):
     def __init__(self, port_name):
         self.port_name = port_name
-        # self.port_desc = port_desc
-        # self.port_offline = port_offline
-        # self.port_offline = port_offline
-        # self.port_vlan = port_vlan
-
+        
 
 def get_info_port(interfaces_list, session):
     for i in interfaces_list:
